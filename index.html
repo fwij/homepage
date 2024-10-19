@@ -41,13 +41,16 @@
     <script src="bookmarks.js"></script>
     <script>
       const searchUrl = "https://google.com/search?q=";
-      // Search on enter key event
-      function search(e) {
-        if (e.keyCode == 13) {
-          var val = document.getElementById("search-field").value;
-          window.open(searchUrl + val);
-        }
-      }
+
+function search(e) {
+  if (e.keyCode === 13) { // Check for Enter key
+    e.preventDefault(); // Prevent default behavior
+    var val = document.getElementById("search-field").value;
+    const newTab = window.open('about:blank'); // Open a new blank tab
+    newTab.location.href = searchUrl + encodeURIComponent(val); // Redirect to the search URL
+  }
+}
+
       // Get current time and format
       function getTime() {
         let date = new Date(),
