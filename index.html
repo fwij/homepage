@@ -40,31 +40,14 @@
 
     <script src="bookmarks.js"></script>
     <script>
- <div id="search">
-  <input
-    id="search-field"
-    type="text"
-    name="search-field"
-    onkeypress="return search(event)"
-    placeholder="Type your search term and press Enter"
-  />
-</div>
-<iframe id="search-iframe" style="width: 100%; height: 80vh; border: none;"></iframe>
-
-      
-      
       const searchUrl = "https://google.com/search?q=";
-
-function search(e) {
-  if (e.keyCode === 13) { // Check for Enter key
-    e.preventDefault(); // Prevent default behavior
-    var val = document.getElementById("search-field").value;
-    const iframe = document.getElementById("search-iframe");
-    iframe.src = searchUrl + encodeURIComponent(val); // Set iframe source to the search URL
-  }
-}
-
-
+      // Search on enter key event
+      function search(e) {
+        if (e.keyCode == 13) {
+          var val = document.getElementById("search-field").value;
+          window.open(searchUrl + val);
+        }
+      }
       // Get current time and format
       function getTime() {
         let date = new Date(),
